@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react'
 import { v4 } from 'uuid'
 
+//estilos
+import { AddButton, Container, Product, DeleteButton } from './styles'
+
 function Home() {
 
   const inputProd = useRef()
@@ -16,19 +19,19 @@ function Home() {
   }
 
   return (
-    <div>
+    <Container>
       <h1>Lista de Compras</h1>
       <input placeholder="produto..." ref={inputProd} />
-      <button onClick={AddProductButtom}>Adicionar</button>
+      <AddButton onClick={AddProductButtom}>Adicionar</AddButton>
 
       {products.map((products) => (
-        <div key={products.id}>
+        <Product key={products.id}>
           <p>{products.name}</p>
-          <button onClick={() => DeleteProduct(products.id)}>🗑️</button>
-        </div>
+          <DeleteButton onClick={() => DeleteProduct(products.id)}>🗑️</DeleteButton>
+        </Product>
       ))}
 
-    </div>
+    </Container>
   )
 }
 
